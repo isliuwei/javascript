@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#container{
+			width: 1000px;
+			border: 1px solid #000;
+			margin: 50px auto;
+		}
+		#ground{
+			width: 1000px;
+			height: 500px;
+			position: relative;
+		}
+		#ground .block{
+			width: 18px;
+			height: 18px;
+			border: 1px dotted #ccc;
+			float: left;
+			background: orange;
+		}
+		#ground .section{
+			width: 20px;
+			height: 20px;
+			background: red;
+			position: absolute;
+			top: 60px;
+			color: #fff;
+			line-height: 20px;
+			text-align: center;
+		}
+		#ground .food{
+			background: blue;
+		}
+		#control{
+			width: 1000px;
+			height: 50px;
+			line-height: 50px;
+			position: relative;
+		}
+		#banner{
+			float: left;
+		}
+		#buttons{
+			float: right;
+		}
+
+		/*#score{
+			width: 30px;
+			height: 20px;
+		}
+		#score-box{
+			position: 
+
+		}*/
+		#info{
+			width: 120px;
+			height: 150px;
+			position: absolute;
+
+			left: 10px;
+			top: 200px;	
+		}
+		#tbody td{
+			font-size: 12px;
+			padding: 5px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="info">
+			<table id="tbody">
+				<tr>
+					<td>玩家</td>
+					<td id="user">user</td>
+				</tr>
+				<tr>
+					<td>得分</td>
+					<td id="score">0</td>
+				</tr>
+				<tr>
+					<td>速度</td>
+					<td id="speed"></td>
+				</tr>
+				<tr>
+					<td><button id="accelerator">加速</button></td>
+					<td><button id="decelerator">减速</button></td>
+				</tr>
+			</table>	
+		</div>
+		<div id="ground"></div>
+		<div id="control">
+			<span id="banner">JavaScript 贪吃蛇 By 唯创网讯</span>
+			<div id="buttons">
+				<input type="button" id="btn-start" value=开始>
+				<input type="button" id="btn-pause" value=暂停>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<script>
+		
+
+		// 1.初始化草场
+		// 创建50*25个宽为20px高为20px的div 并追加到草场上
+		var oGround = document.getElementById('ground');
+		for(var i=0; i<50*25; i++){
+			var oDiv = document.createElement('div');
+			oGround.appendChild(oDiv);
+			oDiv.className = 'block';
+		}
+
+		// 2.初始化小蛇
+		// 创建三个小div 并将其初始位置固定
+		var aSnakeBody = []; //用于存放蛇身体
+		for(var i=0; i<3; i++){
+			var oSection = document.createElement('div');
+			oSection.style.left = (3-i)*20 + 'px';
+			oSection.innerHTML = i;
+			oSection.className = 'section';
+			oGround.appendChild(oSection);
+			aSnakeBody.push(oSection); //将生成的蛇身体添加到数组aSnakeBody中
+		}
+		// console.log(aSnakeBody);
+		var oSnakeHead = aSnakeBody[0]; //取出蛇头
+		// console.log(oSnakeHead);
+
+		// 3.随机生成食物
+		// 动态生成一个div 然后给该div进行随机定位  但是注意定位的位置不能除了边界并且不能和小蛇的位置重合
+		// 先确定食物要定位的位置坐标
+		var oFood;
+		function createFood(){
+			do{
+				var bFlag = true; //一个标识位 true 表示找到（不重合）   false 表示未找到（重合）
+				var iLeft = Math.floor(Math.random()*50)*20;
+				var iTop = Math.floor(Math.random()*25)*20;
+				// console.log(iLeft + ", " + iTop);
+				for(var i=0; i<aSnakeBody.length; i++){ //判断食物是否和蛇身体重合
+					if(aSnakeBody[i].offsetleft == iLeft && aSnakeBody[i].offsetTop == iTop){ 
+					//该条件成立,表示未找到（重合）bFlag置为false 继续执行循环
+						bFlag = false;
+						break; //只要找到不合适的位置便立即跳出循环
+					}
+				}
+			}while(  !bFlag  );
+			oFood = document.createElement('div');
+			//虽然iLeft是do循环体中的变量 但是js中没有块级作用域,只有函数作用域,因此循环体中的变量在循环体外部可以直接访问
+			oFood.style.left = iLeft + 'px'; 
+			oFood.style.top = iTop + 'px';
+			oFood.className = 'section food';
+			oGround.appendChild(oFood);
+		}
+
+		createFood();
+		
+		
+
+		// 4.移动
+
+		// 为 开始 按钮注册单击事件
+		// 提示输入用户名
+		var score = 0;
+		var oScore = document.getElementById('score');
+		var user = prompt("请输入玩家姓名","奥巴马");
+		var oUser = document.getElementById('user');
+		oUser.innerHTML = user;
+		var oBtnStart = document.getElementById('btn-start');
+		var timer;
+		oBtnStart.onclick = function(){
+			oBtnStart.value = "结束";
+			if(timer){
+				clearInterval(timer);
+			}
+			timer = setInterval(function(){
+				move();
+			},speed);	
+		};
+
+		
+		function move(){
+			// for(var i=0; i<aSnakeBody.length; i++){
+			// 	aSnakeBody[i].style.left = aSnakeBody[i].offsetLeft + 20 + 'px';		
+			// }
+			// if(direction == 'left'){
+			// 	oSnakeHead.style.left = oSnakeHead.offsetLeft - 20 +'px';
+			// 	}
+			// else if(direction == 'top'){
+			// 	oSnakeHead.style.top = oSnakeHead.offsetTop - 20 +'px';
+			// }
+			// else if(direction == 'right'){
+			// 	oSnakeHead.style.left = oSnakeHead.offsetLeft + 20 +'px';
+			// }
+			// else if(direction == 'down'){
+			// 	oSnakeHead.style.top = oSnakeHead.offsetTop + 20 +'px';
+			// }
+
+			
+			var nextPos = {//蛇头的下一个位置
+				left: oSnakeHead.offsetLeft,
+				top: oSnakeHead.offsetTop
+			};
+			if(direction == 'left'){
+				nextPos.left -= 20;
+			}else if(direction == 'up'){
+				nextPos.top -= 20;
+			}else if(direction == 'right'){
+				nextPos.left += 20;
+			}else if(direction == 'down'){
+				nextPos.top += 20;
+			}
+			for(var i=0; i<aSnakeBody.length; i++){
+				var nowPos = {
+					left: aSnakeBody[i].offsetLeft,
+					top: aSnakeBody[i].offsetTop
+				};
+				aSnakeBody[i].style.left = nextPos.left + 'px';
+				aSnakeBody[i].style.top = nextPos.top + 'px';
+				nextPos = nowPos;
+			}
+			// 蛇吃食物
+			// 当蛇头的位置与食物的位置重合时,将食物push到	aSnakeBody数组中
+			if(oSnakeHead.offsetLeft == oFood.offsetLeft && oSnakeHead.offsetTop == oFood.offsetTop){
+				oFood.className = 'section';
+				aSnakeBody.push(oFood);
+				score+=10;
+				// console.log(speed);
+				// console.log(score);
+				oScore.innerHTML = score + '分';
+				createFood();				
+			}
+			//蛇撞墙 游戏结束
+			if(oSnakeHead.offsetLeft == 1000 || oSnakeHead.offsetLeft == -20 || oSnakeHead.offsetTop == 500 || oSnakeHead.offsetTop == -20 ){
+				alert("Game over!" + "  你的最后得分为" + score + '分!');
+				clearInterval(timer);
+			}
+			// // 蛇吃自己 游戏结束
+			// for(var i=4; i<aSnakeBody.length; i++){
+			// 	if(oSnakeHead.offsetLeft == aSnakeBody[i].offsetLeft && oSnakeHead.offsetTop == aSnakeBody[i].offsetTop  ){
+			// 			alert("Game over!");
+			// 			clearInterval(timer);
+			// 	}
+			// }
+			bDown = true;
+		}
+		
+		
+
+
+		var oBtnPause = document.getElementById('btn-pause');
+		oBtnPause.onclick = function(){
+			if(timer){
+				clearInterval(timer);
+				oBtnPause.value = '继续';
+			}else{
+				oBtnStart.onclick();
+				oBtnPause.value = '暂停';
+			}	
+		};
+
+		// 注册 onkeydown 事件 -- 从而确定蛇移动的方形
+		var direction = 'right';
+		document.onkeydown = function(e){
+			e = e || window.event;
+			var key = e.which || e.keyCode;
+			switch(key){
+				case 37: //向左
+				case 65: //A
+					if(direction != 'right'){
+						direction = 'left';
+					}
+					// alert(direction);
+					break;
+				case 38: //向上
+				case 87: //W
+					if(direction != 'down'){
+						direction = 'up';
+					}
+					// alert(direction);
+					break;
+				case 39: //向右
+				case 68: //D
+					if(bDown){
+						if(direction != 'left'){
+							direction = 'right';
+						}
+					}
+					bDown = false;
+					// alert(direction);
+					break;
+				case 40: //向下
+				case 83: //S
+					if(bDown){
+						if(direction != 'up'){
+							direction = 'down';
+						}
+					}
+					bDown = false;
+					// alert(direction);
+					break;
+			}
+		};
+
+		// 加速减速
+
+
+		var oSpeed = document.getElementById('speed');
+		var speed = 300;
+		var speed = parseInt(prompt("请输入游戏速度,默认为300ms",300));
+		oSpeed.innerHTML = speed + 'ms';
+		var oAccelerator = document.getElementById('accelerator');
+		var oDecelerator = document.getElementById('decelerator');
+		oAccelerator.onclick = function(){
+			clearInterval(timer);
+			timer=setInterval(function(){
+				move();
+			},speed-=50);
+			oSpeed.innerHTML = speed + 'ms';	
+
+		};
+		oDecelerator.onclick = function(){
+			clearInterval(timer);
+			timer=setInterval(function(){
+				move();
+			},speed+=50);
+			oSpeed.innerHTML = speed + 'ms';
+		};
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

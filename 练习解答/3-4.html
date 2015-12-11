@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>习题3-4</title>
+</head>
+<body>
+
+
+
+
+	<script>
+//在页面上编程输出100~1000之间的所有素数,并要求每行显示6个素数.
+		function IsPrime(num){
+			if (num<1) return false;
+			for(var i=2; i<num; i++){
+				if(num%i==0){
+					return false;
+				}
+					return true;
+				
+			}
+		}
+
+		var nb = 0;
+		for(var num=100; num<=1000; num++){
+			if(IsPrime(num)){
+				if(nb%6>0){
+					document.write(",");
+					nb++;
+					document.write(num);	
+				}
+				if(nb%6==0){
+					document.write("\n");
+				}
+			}
+		}
+
+// var n,nb=0;
+// for(n=100;n<=1000;n++)
+// {
+// 	if (IsPrime(n))
+// 	{
+// 		if (nb%6 > 0) document.write(",");
+// 		nb++;
+// 		document.write(n);
+// 		if (nb%6 == 0) document.write("\n");
+// 	}
+// }
+
+		
+
+
+		
+		
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<!-- //流程结构 顺序结构 分支结构 循环结构
+	if else else if  elseif  switch case
+	for while do-while {name:'xiaoming',age:27} for..in forEach -->
+
+	<script>
+		/*
+		var a='91a';
+		var b=parseInt(a);
+		console.log(b);*/
+		/*
+			猜数游戏：进入页面 随机产生一个数1-500 弹出一个输入框  两个数比较
+
+		*/
+		var num=Math.floor(Math.random()*500);
+
+
+		document.write(num+"<br />");
+		var num1=prompt("请输入一个1-500的数字");
+		//alert(num1.length);
+		if(num1.length>=1 && num1.length<=3){
+			if(num1.substr(0,1)==0){
+				alert('输入数据首字符非法');
+				//break;
+			}else{
+				if(num1>num){
+					document.write("大于");
+				}else if(num1==num){
+					document.write("猜对了");
+				}else{
+					document.write("小了");
+				}
+			}
+		}else{
+			document.write("输入数据不合法");
+		}
+
+
+		
+		
+
+		//alert(num);
+
+		//alert(Math.max(2,3)); 
+		/*
+		var num1=prompt("请输入一个数字");
+		var num1=Number(num1);
+		if(!isNaN(num1)){
+			alert(Math.max(0,Math.min(6,num1)));
+		}else{
+			alert("输入的不是数字");
+		}*/
+		
+
+		// var o=new Object();
+		// o.width=50;
+		// alert(o.width);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	
+	function Play(){
+		this.width=80;
+		this.height=780;
+		this.autoPlay=function(){
+			alert('tttt');
+		}
+
+		this.test=function(){
+			alert('test');
+		}
+
+		var killer=function(){
+			alert('killer');
+		}
+	}
+
+	Play.killer=function(){
+		alert('kkkk');
+	}
+
+	//var t=new Play();
+	//document.write(t.width);
+	//t.test();
+	Play.killer();
+
+	/*
+	function Play(width,height){
+		this.width=width;
+		this.height=height;
+		this.test=function(){
+			alert(width+height);
+		}
+	}
+
+	
+	var p=new Play(50,60);
+	/*
+	document.write(p.width);
+	p.test();
+
+	var pro="";
+	for(pro in p){
+		document.write(pro+"<br />");
+		document.write(p[pro]+"<br />");
+	}
+
+	var docu="";
+	for(docu in document){
+		document.write(document[docu]+"<br />");
+	}
+
+	*/
+	/*
+		function Play(){
+			var p=new Object();
+
+			//属性
+			p.width=20;
+			p.height=30;
+
+			//方法
+			p.autoPlay=function(){
+				alert("aaa");
+			}
+
+			p.test=function(){
+				
+			}
+
+			return p;
+		}
+
+		
+
+		var p=Play();
+		p.autoPlay();
+		document.write(p.width);
+	*/
+	</script>
+</body>
+</html>

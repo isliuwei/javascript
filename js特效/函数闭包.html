@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数闭包</title>
+	<style>
+
+		
+	</style>
+</head>
+<body>
+
+
+	<ul id="list">
+		<li>0</li>
+		<li>1</li>
+		<li>2</li>
+	</ul>
+
+
+
+	<script>
+		// 需求:当我们单击每一个列表项目的li时弹出该列表项目对应的索引
+
+        // 此种方法无法实现,因为31行的循环是在页面加载时就执行完毕了,此时的i的值已经累加到了3
+        // 此时单击时,i的值已经变成了3
+
+		// var oUl = document.getElementById('list');
+		// var aLi = oUl.getElementsByTagName('li');
+		// for(var i=0; i<aLi.length; i++){
+		// 	aLi[i].onclick = function(){
+		// 		alert(i);
+		// 	};
+		// }
+
+
+		//函数立即调用
+		//避免污染全局变量
+		//匿名函数
+		/*
+		 *	(function(形参列表){
+		 *		函数体;
+		 *	})(实参列表);
+		 *
+		 */
+
+		 (function(){
+		 	alert('函数立即调用');
+		 })();
+
+
+		 (function(name,age){
+		 	//console.log(name + ", " + age);
+		 	alert(name + " , " + age);
+		 })('lisi','23');
+
+
+
+		/*  函数闭包(closure)
+		 *	
+		 *	从表象上看,就是外部函数里面声明内部函数,内部函数使用了外部函数的局部变量,这使得外部函数中的局部变量在调用完毕之后,不会被回收	
+		 *	函数的形参也是局部变量
+		 *	
+		 */
+
+		 function out(){
+		 	var a = 5;
+		 	var inner = function(){
+		 		return a;
+		 	}
+		 	return inner;
+		 }
+		 var fun = out();
+		 console.log( fun() );
+
+
+
+		var oUl = document.getElementById('list');
+		var aLi = oUl.getElementsByTagName('li');
+		for(var i=0; i<aLi.length; i++){
+			(function(index){
+				aLi[i].onclick = function(){
+				alert(index);
+			};
+			})(i);
+		}
+
+
+		 
+		
+
+
+
+
+
+
+
+
+	</script>
+	
+	
+</body>
+</html>

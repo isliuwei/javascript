@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习1-1</title>
+</head>
+<body>
+
+
+
+
+
+
+	<script>
+	
+//随机生成两个小数给变量x,y.然后显示这两个数中的最大值.（提示：语句“var x=Math.random();”可为变量生成一个随机小数:另外,使用条件运算符"?")
+	var x = Math.random();
+	var y = Math.random();
+	document.write("x="+x);
+	document.write("<br/>");
+	document.write("y="+y);
+	document.write("<br/>");
+	// 使用Math.max(x,y)函数,返回最大值
+	// var max = Math.max(x,y);
+	// alert(max);
+
+//条件运算符
+//variable = boolean_expression ? true_value : false_value;
+//var iMax = (iNum1 > iNum2) ? iNum1 : iNum2;
+
+	var max;
+	max = (x)>(y)? x : y;
+	document.write("max="+max);
+	document.write("<br/>");
+
+	</script>
+</body>
+</html>

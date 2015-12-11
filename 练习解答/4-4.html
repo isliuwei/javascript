@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习4-4</title>
+</head>
+<body>
+
+
+
+	<script>
+//编制一个从字符串中收集数字字符（"0"',"1"，…"9"）的函数CollectDigits(s)，它从字符串s中顺序取出数字，并且合并为一个独立的字符串作为函数的返回值。例如函数调用CollectDigits("1abc23def4"）的返回值是字符串"1234"。
+
+
+
+	// var s = [1,"a","b","c",2,3,"d","e","f",4];
+	// console.log(s);
+	// console.log(typeof s[1]);
+	// var s = "1abc23def4";
+	// console.log(s);
+	
+
+	function CollectDigits(s){
+		for(var i=0;i<=s.length;i++){
+			if(!isNaN(s[i])){
+				var numStr = document.write(s[i]);
+			}
+		}
+		// document.write(numStr);
+		return numStr;
+	}
+	var s = prompt("请输入字符串：","再次框内输入字符串")
+	document.write("抽取的数字字符串为：");
+	CollectDigits(s);
+	
+	// if(!isNaN(s[1])){
+	// 	console.log("true！");
+	// }else{
+	// 	console.log("false!");
+	// }
+	// for(var i=0;i<=10;i++){
+	// 	console.log(s[i]);
+	// 	console.log(typeof s[i]);
+
+	// }
+	// console.log(typeof s);
+	// console.log(s[0]);
+	// console.log(typeof s[0]);
+	// console.log(typeof parseInt(s[0]));
+	// console.log(typeof parseInt(s[2]));
+	// console.log(typeof s[0]);
+
+	// console.log(typeof s[0]);
+	// console.log(s[1]);
+	// console.log(typeof s[1]);
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

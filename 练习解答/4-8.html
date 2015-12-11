@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习4-8</title>
+</head>
+<body>
+
+
+
+
+	<script>
+
+
+	// var d;
+	// d = prompt("请输入一个日期：","在此框内输入(格式为：2012,02,13)");
+	
+	// alert(typeof (d));
+	// alert(d);
+	// var y=parseInt(d.slice(0,4));
+	// alert(y);
+	// alert(typeof(y));
+	// var m=parseInt(d.slice(5,7));
+	// alert(m);
+	// alert(typeof(m));
+	// var da=parseInt(d.slice(8,10));
+	// alert(da);
+	// alert(typeof(da));
+	// DayOfYear(d);
+	var d;
+
+	d = prompt("请输入一个日期：","在此框内输入(格式为：2012,02,13)");
+
+	var y=Number(d.slice(0,4));	
+	var m=Number(d.slice(5,7));	
+	var da=Number(d.slice(8,10));
+	var months = new Array(0,31,28,31,30,31,30,31,31,30,31,30,31);
+
+	function IsLeapYear(y){
+			if(y%4==0 && y%100!=0 || y%400==0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+	function DayOfYear(d){
+		var Days = 0;
+		if(IsLeapYear(y)){
+			months[2]=29;
+		}
+
+		for(var i=0; i<m; i++){
+			Days += months[i];
+		}
+		return Days+da;	
+	}
+
+	document.write("你输入的日期是:"+y+"年"+m+"月"+da+"日"+",是本年度的第"+DayOfYear(d)+"天");
+
+	
+
+	
+
+	
+
+
+
+	</script>
+	
+</body>
+</html>

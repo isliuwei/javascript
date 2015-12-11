@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+		#container{
+			width: 200px;
+			height: 200px;
+			padding: 5px;
+			border: 1px solid #666;
+			position: relative;
+		}
+		#img{
+			width: 200px;
+			height: 200px;
+		}
+		#mark{
+			width: 50px;
+			height: 50px;
+			float: left;
+			border: 1px solid #fff;
+			position: absolute;
+			left: 5px;
+			top: 5px;
+
+		}
+	</style>
+</head>
+<body>
+
+
+	<div id="container">
+		<img id="img" src="img/small.jpg" alt="" >
+		<span id="mark"></span>
+	</div>
+
+
+
+
+	<script>
+		var oContainer = document.getElementById('container');
+		var oImg = document.getElementById('img');
+		var oMark = document.getElementById('mark');
+
+		oMark.onmousedown = function(e){
+			e = e || window.event;
+			var constantX =  e.clientX - oImg.offsetLeft;
+			var constantY =  e.clientY - oImg.offsetTop;
+			// alert(constantX + "," + constantY);
+			oMark.onmousemove = function(e){
+				e = e || window.event;
+				var iLeft = e.clientX - constantX;
+				var iTop = e.clientY - constantY;
+				
+				oMark.style.left = iLeft + 'px';
+				oMark.style.top = iTop + 'px';
+			};
+			
+
+		};
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

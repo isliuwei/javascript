@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//var num=Math.floor(Math.random()*500);
+		var num=Math.ceil(Math.random()*500);
+		//var a=window.prompt("请输入一个数字");
+		//alert(a);
+		//document.write(num);
+		var a=window.prompt("请输入一个数字");
+		//var a=Number(a);
+		//alert(typeof(a));
+		/*
+		for(var i=0;i<a.length;i++){
+			alert(a[i]);
+		}*/
+		//document.write(isNaN(a));
+		var b=isNaN(a);
+		/*
+		if(typeof(a)!='number'){
+			document.write("输入的不是数字");
+		}else{
+			if(a>num){
+				document.write("大了");
+			}else if(a<num){
+				document.write("小了");
+			}else{
+				document.write("相等");
+			}
+		}*/
+		if(b==true){
+			document.write("输入的不是数字");
+		}
+	</script>
+</body>
+</html>

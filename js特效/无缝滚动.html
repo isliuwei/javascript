@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝滚动</title>
+	<style>
+
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style-type: none;
+		}
+		#container{
+			width: 400px;
+			height: 200px;
+			border: 1px solid #ccc;
+			/*background: #ccc;*/
+			margin: 50px auto;
+			overflow: hidden;  /*溢出隐藏*/
+			/*overflow: scroll;*/  
+			position: relative;
+		}
+		#imgs{
+			/*width: 560px;*/
+			height: 120px;
+			position: absolute;
+		}
+		#imgs li{
+			width: 120px;
+			height: 120px;
+			line-height: 120px;
+			text-align: center;
+			background: #000;
+			color: #fff;
+			font-size: 50px;
+			margin-right: 20px;
+			float: left;
+		}
+		#arrow{
+			width: 220px;
+			height: 40px;
+			/*background: blue;*/
+			position: absolute;
+			left: 50%;
+			margin-left: -110px;
+			bottom: 10px; 
+		}
+		#arrow span{
+			/*display: block;*/
+			float: left;
+			margin-right: 10px;
+			width: 100px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			background: #ccc;
+			cursor: pointer;
+		}
+
+	</style>
+	
+
+
+
+
+</head>
+<body>
+
+	<div id="container">
+		<ul id="imgs">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<div id="arrow">
+			<span id="prev">&lt;&lt;向左</span>
+			<span id="next">向右&gt;&gt;</span>
+		</div>
+	</div>
+
+
+	
+
+
+
+
+	<script>
+		var oContainer = document.getElementById('container');
+		
+		// 1. 复制#imgs中的图片
+		var oImgs = document.getElementById('imgs');
+		// console.log(oImgs.innerHTML);
+		// console.log(typeof (oImgs.innerHTML));
+		// console.log(oImgs.innerText);
+		oImgs.innerHTML += oImgs.innerHTML;
+
+		// 2. 设置#imgs的宽度(所有图片的宽度加上其外边距)
+		var aLi = oImgs.getElementsByTagName('li');
+		oImgs.style.width = aLi.length * (aLi[0].offsetWidth + 20) + 'px';
+
+		// 3. 移动#imgs
+		var speed = 2;
+		setInterval(function(){
+			// oImgs.style.left = (oImgs.offsetLeft - 2) + 'px';
+
+			oImgs.style.left = (oImgs.offsetLeft + speed) + 'px';
+			if(oImgs.offsetLeft <= -oImgs.offsetWidth/2){
+				oImgs.style.left = 0;
+			}
+			if(oImgs.offsetLeft >0 ){
+				oImgs.style.left = -oImgs.offsetWidth/2 + 'px';
+			}	
+		},30)
+
+		// 4. 设置
+		var oPrev = document.getElementById('prev');
+		var oNext = document.getElementById('next');
+
+		// oPrev.onmouseover = function(){
+		// 	speed = -2;
+		// };
+
+		// oNext.onmouseover = function(){
+		// 	speed = +2;
+		// };
+
+		oPrev.onmouseover = oNext.onmouseover = function(){
+			if(this == oPrev){
+				speed = -2;
+
+			}else{
+				speed = +2;
+			}
+		};
+
+		 
+
+		
+
+
+
+
+
+
+
+
+		
+
+		
+		
+
+
+	
+
+	</script>
+	
+</body>
+</html>

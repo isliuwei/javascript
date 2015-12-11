@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Javascript日常测试</title>
+</head>
+<body>
+
+
+	<!-- <div id="div1">
+		<h1 id="h1">h1</h1>
+		<p>p1</p>
+	</div>
+	<h1>2222</h1>
+	<div>div-box</div> -->
+
+
+
+
+
+
+
+	<script>
+
+		// var oDiv1 = document.getElementById('div1');
+		// var oH1 = document.getElementById('h1');
+
+		// function next(elem){
+		// 	do{
+		// 		elem = elem.nextSibling;
+		// 	}while(elem && elem.nodeType != 1)
+		// 	return elem;
+		// }
+		// // console.log(next(next(oDiv1)));
+
+		// function first(elem){
+		// 	elem = elem.firstChild;
+		// 	return elem&&elem.nodeType!=1?elem:next(elem);
+		// }
+
+
+
+
+	/* 
+	 *	如何获取元素的宽度
+	 *  ① 通过 对象.style.属性（oDiv1.style.width）方式只能获取内联样式的属性，无法获取内部、外部style样式的属性(获取的是空字符串)	
+	 *  ② 可以通过以下方式获取非内联或者内联样式style的属性：a. IE浏览器--对象.currentStyle.属性 
+	 * 												  b. chrome等标准浏览器--getcomputestyle(对象名,false).属性
+	 *	③ 可使用 offset 获取对象的位置、宽度和高度属性。它的具体使用说明：
+	 *     a. offset不是W3C标准语法，但是所有浏览器都兼容支持 
+	 *     b. 对象.offsetWidth -- 返回对象的宽度(只返回数值没有单位)
+	 *		  对象.offsetHeight -- 返回对象的高度(只返回数值没有单位)
+	 *		  对象.offsetLeft -- 返回该对象相对于最近的已定位的祖先元素的位置(只返回数值没有单位)
+	 *		  对象.offsetRight -- 返回该对象相对于最近的已定位的祖先元素的位置(只返回数值没有单位)
+	 *	④ offsetWidth 和 offsetHeight 返回的宽度和高度的数值是所有可视区域的宽度和高度的数值
+	 *	   （包括border(边框)、padding（内边距）以及content(内容区域)）即：width（height）= content + padding + border
+	 *	⑤ 对于通过 对象.style.属性 获取的宽度和高度只是指content（内容）区域的宽度和高度，它获取的宽度和高度既有数值也有单位
+	 *	⑥ ④和⑤所有浏览器都是如此。 对于offsetWidth只能获取宽度（只读），无法修改，修改必须借助 style.width = "xxxx"方式进行
+	 *	
+	 */
+
+		
+
+
+	
+
+	</script>
+	
+</body>
+</html>

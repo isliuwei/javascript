@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>折叠菜单栏</title>
+	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style-type: none;
+		}
+		#container{
+			width: 200px;
+			border: 1px solid black;
+		}
+		#container h4{
+			width: 200px;
+			height: 30px;
+			background: #000;
+			color: #fff;
+			line-height: 30px;
+			cursor: pointer;
+		}
+		#level1 ul{
+			display: none;
+		}
+
+		
+
+		
+	</style>
+</head>
+<body>
+	<div id="container">
+		<ul id="level1">
+			<li>
+				<h4>管理区</h4>
+				<ul class="level2">
+					<li>1111</li>
+					<li>2222</li>
+					<li>3333</li>
+				</ul>
+			</li>
+			<li>
+				<h4>交流区</h4>
+				<ul class="level2">
+					<li>4444</li>
+					<li>5555</li>
+					<li>6666</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+
+
+
+		<script>
+			var oUl = document.getElementById('level1');
+			var aH4 = document.getElementsByTagName('h4');
+			var aLevel2 = oUl.getElementsByTagName('ul'); 
+			
+			// var bFlag = false; // 标识位 false--代表隐藏  true--代表显示
+
+			for(var i=0; i<aH4.length; i++){
+				aH4[i].index=i;
+				aH4[i].bFlag = false; // 标识位 false--代表隐藏  true--代表显示
+				aH4[i].onclick = function(){
+					if(this.bFlag){
+						aLevel2[this.index].style.display = 'none';
+						this.bFlag = false;
+					}else{
+						aLevel2[this.index].style.display = 'block';
+						this.bFlag = true;
+					}	
+				};
+			}
+		</script>
+
+
+
+
+	
+	
+
+
+
+	<script>
+
+		
+		
+	
+	
+	</script>
+
+
+</body>
+</html>

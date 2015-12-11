@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style-type: none;
+		}
+		#container{
+			width: 500px;
+			height: 500px;
+			/*background: red;*/
+			margin: 50px auto;
+			position: relative;
+			cursor: pointer;
+		}
+		#imgs{
+			position: relative;
+		}
+		#imgs img{
+			display: none;
+		}
+		#imgs .selected{
+			display: block;
+		}
+		#menu{
+			width: 240px;
+			height: 50px;
+			margin-top: 20px;
+			position: absolute;
+			left: 50%;
+			margin-left: -120px;
+		}
+		#menu li{
+			width: 50px;
+			height: 39px;
+			float: left;
+			margin-right: 5px;
+			cursor: pointer;
+
+		}
+		#menu img{
+			width: 50px;
+			height: 39px;
+			
+		}
+		#menu .selected{
+			border: 2px solid orange;
+		}
+		#prev{
+			float: left;
+			width: 30px;
+			height: 66px;
+			/*background: red;*/
+			position: absolute;
+			top: 50%;
+			margin-top: -90px;
+			background: url(./img/direction.png) no-repeat 0 -198px;
+		}
+		#next{
+			float: right;
+			width: 30px;
+			height: 66px;
+			/*background: red;*/
+			position: absolute;
+			top: 50%;
+			right: 0;
+			margin-top: -90px;
+			background: url(./img/direction.png) no-repeat -73px -198px;
+		}
+
+
+	</style>
+</head>
+<body>
+
+	<div id="container">
+		<div id="imgs">
+			<img src="img/iphone6s-1.jpeg" class="selected">
+			<img src="img/iphone6s-2.jpeg">
+			<img src="img/iphone6s-3.jpeg">
+			<img src="img/iphone6s-4.jpeg">	
+		</div>
+			<span id="prev"></span>
+			<span id="next"></span>
+			<ul id="menu">
+				<li class="selected"><img src="img/iphone6s-1.jpeg"></li>
+				<li><img src="img/iphone6s-2.jpeg"></li>
+				<li><img src="img/iphone6s-3.jpeg"></li>
+				<li><img src="img/iphone6s-4.jpeg"></li>
+			</ul>	
+	</div>
+
+
+
+
+
+
+
+	<script>
+		var oContainer = document.getElementById('container');
+		var oImgs = document.getElementById('imgs');
+		var aImgs = oImgs.getElementsByTagName('img');
+		var oMenu = document.getElementById('menu');
+		var aLi = oMenu.getElementsByTagName('li');
+		var oPrev = document.getElementById('prev');
+		var oNext = document.getElementById('next');
+
+
+		for(var i=0; i<aLi.length; i++){
+			aLi[i].index = i;
+			aLi[i].onmouseover = function(){
+				index = this.index;
+				changeImg(this.index);	
+			};
+		}
+
+
+		function changeImg(idx){
+			for(var i=0; i<aLi.length; i++){
+					aLi[i].className = "";
+					aImgs[i].className = "";
+				}
+				aLi[idx].className = "selected";
+				aImgs[idx].className = "selected";
+		}
+
+		var index = 0;
+
+		oPrev.onclick = function(){
+			index--;
+			if(index == -1){
+				index = aImgs.length-1;
+			}
+			changeImg(index);
+		};
+
+		oPrev.onmouseover =function(){
+			this.style.backgroundPosition = '0px 0px';
+
+		};
+		oPrev.onmouseout =function(){
+			this.style.backgroundPosition = '0px  -198px';
+
+		};
+		oNext.onmouseover =function(){
+			this.style.backgroundPosition = '-73px 0px';	
+		};
+		oNext.onmouseout =function(){
+			this.style.backgroundPosition = '-73px -198px';
+		};
+
+		oNext.onclick = function(){
+			index++;
+			if(index == aImgs.length){
+				index = 0;
+			}
+			changeImg(index);
+		};
+
+
+		
+
+		var timer;
+		function play(){
+			timer = setInterval(function(){
+				oNext.onclick();
+			},2000);
+		}
+
+		play();
+
+		oContainer.onmouseover= function(){
+			clearInterval(timer);
+			
+		};
+
+		oContainer.onmouseout = function(){
+			play();	
+		};
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+
+	
+		
+
+
+	
+
+	
+	
+</body>
+</html>

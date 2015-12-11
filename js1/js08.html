@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//形参：在定义函数中 函数括号中的那个变量function aa(a,b){}
+		//实参: 在调用函数中 函数括号中的那个变量aa(1,2)
+		//参数的类型 任何数据类型
+		//形参==实参  形参大于实参  形参小于实参
+		//arguments(length,callee)
+		/*
+		function demo(a,b){
+			//return a+b;
+			//alert(arguments.length);
+			for(var i=0;i<arguments.length;i++){
+				alert(arguments[i]);
+				//alert(arguments.i);
+
+			}
+		}
+
+		demo(1,3,5);*/
+
+		// function demo1(int a,int b){
+
+		// }
+
+		// function demo1(float a,float b){
+
+		// }
+
+		// function demo1(int a,int b,int c){
+
+		// }
+
+		// function aa(a,b){
+		// 	if(arguments.length==1)
+		// }
+
+		//回调函数
+		/*
+		function math(num1,num2){
+			//return bb(num1,num2);
+			return cc(num1,num2);
+		}
+
+		function bb(num1,num2){
+			return (num1+num2)*3;
+		}
+
+		function cc(num1,num2){
+			return (num1-num2)*2;
+		}
+
+		alert(math(1,2*/
+		/*
+		function math(num1,num2,fun){
+			return fun(num1,num2);
+		}
+
+		alert(math(1,2,cc));
+
+		function bb(num1,num2){
+			return num1+num2;
+		}
+
+		function cc(num1,num2){
+			return num1*num2;
+		}
+		*/
+
+		//递归函数
+		function aa(num1){
+			if(num1>1){
+				aa(--num1);
+			}
+			document.write(num1+"<br />");
+		}
+
+		aa(10);
+
+		</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>习题3-7</title>
+</head>
+<body>
+
+
+
+
+	<script>
+//斐波纳契(Fibonacci)数列的第一项是1,第二项是1,以后各项都是前两项的和.试用递归函数和非递归函数各编写一个程序,求斐波纳契数列第N项的值.
+	
+		function Fab1(n)
+		{//递归函数
+			if (n<=2)
+				return 1;
+			else
+				return Fab1(n-1)+Fab1(n-2);
+		}
+
+
+		function Fab2(n)
+		{//非递归函数
+			if (n<=2) return 1;
+			var f1=1,f2=1,i,temp;
+			for(i=3;i<=n;i++)
+			{
+				temp = f1+f2;
+				f1 = f2;
+				f2 = temp;
+			}
+			return f2;
+		}
+
+		var n;
+		n = parseInt(prompt("N=","0"));
+		document.write("递归函数Fab1(" + n + ")=" + Fab1(n) + "<br>");
+		document.write("非递归函数Fab2(" + n + ")=" + Fab2(n) + "<br>");
+
+
+		
+
+
+	
+
+	
+	
+	
+		
+	</script>
+	
+</body>
+</html>

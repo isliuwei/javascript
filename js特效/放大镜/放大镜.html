@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+		#container{
+			position: relative;
+		}
+		#small-pic{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #666;
+			padding: 5px;
+			float: left;
+			position: relative;
+		}
+		#small-pic img{
+			width: 200px;
+			height: 200px;
+		}
+		#big-pic{
+			width: 400px;
+			height: 400px;
+			border: 1px solid #666;
+			position: absolute;
+			left: 220px;
+			display: none;
+			background: url(./img/big.jpg) no-repeat 0 0;
+		}
+		
+		#float{
+			width: 50px;
+			height: 50px;
+			float: left;
+			border: 1px solid #fff;
+			position: absolute;
+			left: 5px;
+			top: 5px;
+			background: #000;
+			opacity: 0.3;
+			filter:alpha(opacity:30);
+			display: none;
+		}
+		#mark{
+			width: 200px;
+			height: 200px;
+			float: left;
+			position: absolute;
+			background: #000;
+			opacity: 0;
+			filter:alpha(opacity:0);
+			z-index: 2;
+
+		}
+
+		
+	</style>
+</head>
+<body>
+
+
+	<div id="container">
+		<div id="small-pic">
+			<span id="float"></span>
+			<span id="mark"></span>
+			<img src="img/small.jpg" alt="" \>	
+		</div>
+		<div id="big-pic"></div>
+	</div>
+
+
+
+
+	<script>
+		
+		var oSmallPic = document.getElementById('small-pic');
+		var oFloat = document.getElementById('float');
+		var oMark = document.getElementById('mark');
+		var oBigPic = document.getElementById('big-pic');
+
+
+		oMark.onmouseover = function(e){
+			oFloat.style.display = "block";
+			oBigPic.style.display = "block";
+		};
+		
+		oMark.onmousemove = function(e){
+			
+			e = e || window.event;
+			// console.log(e.clientX + ", " + e.clientY);
+			// console.log(oFloat.offsetLeft + ", " + oFloat.offsetTop);
+			// console.log(oSmallPic.offsetLeft + ", " + oSmallPic.offsetTop);
+			var iLeft = e.clientX - oSmallPic.offsetLeft - oFloat.offsetWidth/2;
+			var iTop = e.clientY - oSmallPic.offsetTop - oFloat.offsetHeight/2;
+			
+			if( iLeft < 5 ){
+				iLeft = 5;
+			}
+			if( iTop < 5 ){
+				iTop = 5;
+			}
+			if( iLeft > oMark.offsetWidth - oFloat.offsetWidth + 5 ){
+				iLeft = oMark.offsetWidth - oFloat.offsetWidth + 5 ;
+			}
+			if( iTop > oMark.offsetHeight - oFloat.offsetHeight + 5 ){
+				iTop = oMark.offsetWidth - oFloat.offsetWidth + 5;
+			}
+			oFloat.style.left = iLeft  + 'px';
+			oFloat.style.top = iTop  + 'px';
+
+			var fScaleX = iLeft/(oMark.offsetWidth - oFloat.offsetWidth + 5);
+			var fScaleY = iTop/(oMark.offsetHeight - oFloat.offsetHeight + 5);
+			// console.log(fScaleX + ", " + fScaleY);
+			var bgX = (-oBigPic.offsetWidth*fScaleX) ;
+			var bgY = (-oBigPic.offsetHeight*fScaleY) ;
+			// console.log(bgX + ", " + bgY);
+			oBigPic.style.backgroundPositionX = bgX+ 'px';
+			oBigPic.style.backgroundPositionY = bgY+ 'px';
+
+			
+
+
+
+		};
+
+		oSmallPic.onmouseout = function(){
+			oFloat.style.display = "none";
+			oBigPic.style.display = "none";
+		};
+
+		
+		
+			
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

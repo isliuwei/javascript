@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习4-5</title>
+</head>
+<body>
+
+
+
+
+
+	<script>
+//设计一个程序，它（使用一个数组）接收用户输入的7门课程的成绩，然后在页面上显示其总成绩和平均分，并列出小于60的成绩。
+	
+	var score = new Array(7);
+	var sum=0;
+	var i;
+	for(i=0;i<score.length;i++)
+	{
+		score[i]=parseFloat(prompt("请输入第"+(i+1)+"门课程的成绩：","在此框内输入成绩"));
+		sum+=score[i];
+	}
+	document.write("每门功课成绩如下：");
+	document.write("<br />");
+	document.write(score);
+	document.write("<br />");
+	document.write("总成绩为："+sum);
+	document.write("<br />");
+	document.write("平均分为："+Math.round(sum/score.length));
+	document.write("<br />");
+	document.write("小于60的成绩分别是：");
+	for(i=0;i<score.length;i++)
+	{
+		if(score[i]<60)
+		{
+			document.write(score[i]);
+			document.write("\,");
+		}
+	}
+
+
+	
+	
+
+
+
+	
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

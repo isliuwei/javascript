@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+		var names=['zhangsan','lisi','wangwu',56,89];
+
+		for(var i=0;i<names.length;i++){
+			alert(names[i]);
+		}
+
+		function demo(width,height){
+			alert(arguments.length);
+		}
+
+		demo(1,2,3);*/
+		/*
+		var arrs=[["111","222"],["333","444"]];
+		//alert(arrs[1][1]);
+		arrs[1][0]="999";
+		alert(arrs[1][0]);*/
+
+		var arr=new MyArray("aaa","bbb","ccc","ddd");
+
+		function MyArray(){
+			this.length=arguments.length;
+
+			for(var i=0;i<arguments.length;i++){
+				this[i]=arguments[i];
+			}
+
+			this.sort=function(){
+
+			}
+
+			this.pop=function(){
+
+			}
+
+			this.push=function(){
+				
+			}
+		}
+
+		//alert(arr[0]);
+
+	</script>
+</body>
+</html>

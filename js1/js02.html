@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//运算符
+		/*
+		var a=1;
+		var b=a++ + ++a;
+		//document.write(b);
+		var c=++b - b++;
+		var d=--c - c--;
+		var e=d-- - --d;
+		document.write(e);*/
+
+		// var age=prompt("请输入一个年龄");
+
+		// if(age<=10){
+		// 	document.write("小孩");
+		// }else if(age>10 && age<=18){
+		// 	document.write("青少年");
+		// }else if(age==60){
+		// 	document.write('老头');
+		// }else{
+		// 	document.write("耄耋");
+		// }
+
+		/*
+		var a=123;
+		var b='123';
+		alert(typeof(a));
+		alert(typeof(b));
+		if(a===b){
+			alert("ok");
+		}else{
+			alert("error")
+		}*/
+
+
+		//判断输入的年份是不是闰年  (1)能被4整除但不能被100整除 (2)能被400整除
+		//var year=prompt("请输入一个年份");
+
+		/*
+		alert(typeof(year));
+
+		if(year % 4==0 && year %100 !=0 || year %400==0){
+			alert(year+"是闰年");
+		}else{
+			alert(year+"不是闰年");
+		}*/
+
+		/*
+		var num=prompt("请输入一个数字(0~6)");
+		//alert(typeof(num));
+		//var num=Number(num);
+		//alert(typeof(num));
+		var num=parseInt(num);
+		alert(typeof(num));
+		switch(num){
+			case 0:
+				document.write("星期天");
+				break;
+			case '1':
+				document.write("星期一");
+				break;
+			default:
+				document.write("lalala");
+		}*/
+
+		//强制转换布尔型为整型
+		var a=020;
+		var tr=parseInt(a);
+		document.write(tr);  //NaN  not a number
+
+		var a="hello";
+		if(!isNaN(a)){
+			console.log("是一个数字");
+		}else{
+			console.log("不是一个数字");
+		}
+
+	</script>
+</body>
+</html>

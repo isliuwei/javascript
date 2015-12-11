@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+		var arr=[1,5,3,4,2,9,8];
+		//document.write(arr);
+		//arr.sort();
+		for(var i=0;i<arr.length;i++){
+			document.write(arr[i]+"<br />");
+		}
+		var arr1=new Array('3','6','1','7','9','8');
+		document.write(arr1);
+		var arr2=arr1.sort();
+		document.write(arr2);*/
+
+		/*
+		var arr=[1,5,3,4,2,9,8];
+		var arr1=arr.sort(function(a,b){
+			if(a>b){
+				return -1;
+			}else if(a==b){
+				return 0;
+			}else{
+				return 1;
+			}
+		});
+
+		document.write(arr1);*/
+
+		var arr=['aaa','aa','aaaaaa','b','aaaa'];
+		//document.write(arr.sort());
+		var arr1=arr.sort(function(a,b){
+			if(a.length<b.length){
+				return -1;
+			}else if(a.length==b.length){
+				return 0;
+			}else{
+				return 1;
+			}
+		});
+
+		//document.write(arr1);
+
+		arr.push("c");
+		document.write(arr+"<br />");
+		document.write(arr.length+"<br />");
+		arr.pop();
+		document.write(arr+"<br />");
+		document.write(arr.length+"<br />");
+
+		arr.unshift("hello");
+		document.write(arr);
+
+
+	</script>
+</body>
+</html>

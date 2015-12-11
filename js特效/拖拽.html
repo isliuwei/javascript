@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽</title>
+	<style>
+		#div1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- <p>取消浏览器默认行为</p> -->
+
+	<div id="div1"></div>
+
+
+	<script>
+
+	/* 
+	 *	实现拖拽的基本原理
+	 *  鼠标按住并移动过程中，鼠标点按的位置相对于拖拽的元素的位置不变。
+	 *  变化的只是被拖拽的元素相对于已定位的父元素或者浏览器的位置（即left和top的值）。 
+	 *  先计算出这个不变的值constantX和constantY 
+	 *  当拖拽到指定位置时将当前的鼠标的位置值减去不变的值constantX和constantY得到的就是此时被拖拽元素相对于父元素需要定位的数值	
+	 *  注意两点：①鼠标移动的区域是document ②当鼠标滑出元素区域是清除拖拽效果
+	 */
+
+	 var oDiv = document.getElementById('div1');
+
+	 oDiv.onmousedown = function(e){ // e = event 事件
+	 	e = e || window.event; // 解决 IE 的兼容性问题
+	 	var constantX = e.clientX - oDiv.offsetLeft;
+	 	var constantY = e.clientY - oDiv.offsetTop;
+	 	// alert(constantX + ", " + constantY);
+	 	document.onmousemove = function(e){
+	 		e = e || window.event; // 解决 IE 的兼容性问题
+	 		var iLeft = e.clientX - constantX;
+	 		var iTop = e.clientY - constantY;
+	 		//限定拖拽范围
+	 		if(iLeft <=0){ // 左边界
+	 			iLeft = 0;
+	 		}
+	 		if(iTop <=0){ //上边界
+	 			iTop = 0;
+	 		}
+	 		if(iLeft > document.documentElement.clientWidth - oDiv.offsetWidth){ // 右边界 
+	 			// document.documentElement.clientWidth 获取浏览器的宽度
+	 			iLeft = document.documentElement.clientWidth - oDiv.offsetWidth;
+	 		}
+	 		if(iTop > document.documentElement.clientHeight - oDiv.offsetHeight){ // 下边界 
+	 			// document.documentElement.clientWidth 获取浏览器的高度
+	 			iTop = document.documentElement.clientHeight - oDiv.offsetHeight;
+	 		}
+
+	 		// return false; // 取消浏览器默认行为
+
+	 		// alert(constantX + ", " + constantY);
+	 		oDiv.style.left = iLeft + 'px';
+	 		oDiv.style.top = iTop + 'px';
+	 	};
+	 	oDiv.onmouseup = function(){
+	 		document.onmousemove = null;
+	 	};
+
+	 };
+
+	
+
+
+
+		
+
+
+	
+
+	</script>
+	
+</body>
+</html>

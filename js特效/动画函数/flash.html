@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: relative;
+			left: 0;
+			top: 0;
+		}
+		/*#bayi{
+
+		}*/
+	</style>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<!-- <div>
+		<img id="bayi" src="img/bayi.png" alt="">
+	</div> -->
+
+	<script src="js/myjslib-1.0.js"></script>
+	<script>
+		var oDiv = document.getElementById('div1');
+		var oImgs = document.getElementById('bayi');
+		// animate(oDiv,{
+		// 	left:300,
+		// 	height:300,
+		// 	opacity:20,
+		// });
+
+		// 向左300 向下300 宽度300 高度300 透明度50%
+		animate(oDiv,{
+			left:300
+		},function(){
+			animate(oDiv,{
+				top:300
+			},function(){
+				animate(oDiv,{
+					width:300
+				},function(){
+					animate(oDiv,{
+						height:300
+					},function(){
+						animate(oDiv,{
+							opacity:50
+						})
+					})
+				})
+			})
+		})
+
+
+	</script>
+	
+</body>
+</html>

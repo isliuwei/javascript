@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//var a=123;
+		//alert(a);
+		//使用js的语法打印一个两行两列的表格
+		//document.write("<table align='center' border='1'>");
+
+
+		//当出现双引号截断问题 （1）外面用双引号 里面用单引号
+		//使用拼字符串的方式 JS中字符串的连接 用+
+		/*
+		document.write("<table align="+"center border="+"1>");
+			document.write("<tr>");
+				document.write("<td>567</td>");
+			document.write("</tr>");
+		document.write("</table>");*/
+
+	</script>
+	<a href="javascript:alert('xxx')">demo</a>
+	<form action="javascript:alert('yyy')">    <!-- 1.php  /user/login -->
+		<input type="submit" value="提交">
+	</form>
+	<div onclick="alert('$$$$$')">hello</div>
+	<div onclick="aa()">world</div>
+
+
+	<script>
+		//instanceof
+		/*
+		alert(Array instanceof Object);
+		alert(Object instanceof Array);*/
+		/*
+		alert( Function instanceof Object);
+		alert( Object instanceof Function);*/
+
+		//JS没有class这个关键字
+		/*
+		var a=123;
+		alert(typeof(a));
+		var b=123.234;
+		alert(typeof(b));*/
+
+		/*
+		var sum=0;
+		for(var i=0;i<10;i++){
+			sum+=0.1;
+		}
+		alert(sum);
+		if(sum==1.0){
+			alert("OK");
+		}else{
+			alert("error");
+		}*/
+		/*
+		var c="hello";
+		alert(typeof(c));
+		var d;
+		alert(typeof(d));
+		var o=new Object();
+		alert(typeof(o));*/
+
+		//全局变量和局部变量
+		//var a=123;   //全局变量
+
+		//window.alert("123");
+
+		
+		//a=123 window.a=123 和 var a=123
+
+		var a=123;
+		function aa(){
+			//global a;
+			var b=345;
+			alert(a);
+			var a=789;
+			//a=567;
+			alert(b);  //b是一个局部变量可以被函数的内部调用
+		}
+		aa();
+		//alert(a);
+		//alert(b);  //b是函数aa中的局部变量 不能在外部被调用
+		
+
+
+	</script>
+
+</body>
+</html>
+

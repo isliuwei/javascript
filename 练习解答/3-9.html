@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>习题3-9</title>
+</head>
+<body>
+
+
+
+
+	<script>
+//利用全局变量和函数,设计模拟幸运数字机游戏.设幸运数字为8,每次由计算机随机产生3个1-9之间(包括1和9)的随机数,当这3个随机数中有一个数字为8时,就算赢了一次,要求利用函数计算获胜率.
+
+	var luckNum = 8;
+	var nb=0;
+	var randNumList = new Array(3);
+	for(var i=0; i<randNumList.length; i++){
+		randNumList[i] = parseInt(Math.random()*9+1);
+	}
+
+	alert(randNumList);
+	for(var i=0; i<randNumList.length; i++){
+		if(randNumList[i]==luckNum){
+			nb++;
+		}
+	}
+	function rate(nb){
+		return Math.floor(100*(nb/3));
+	}
+	alert("你猜对了"+nb+"次");
+	alert("胜率为:"+rate(nb)+"%");
+	
+
+	
+
+
+	
+	
+		// var randNum1 = parseInt(Math.random()*9+1)
+		// var randNum2 = parseInt(Math.random()*9+1)
+		// var randNum3 = parseInt(Math.random()*9+1)
+		// var randNumList = [randNum1,randNum2,randNum3];
+		// // var randNumList = [parseInt(Math.random()*9+1),parseInt(Math.random()*9+1),parseInt(Math.random()*9+1)]
+		// alert(randNumList);
+		
+
+
+	
+
+	
+	
+	
+		
+	</script>
+	
+</body>
+</html>

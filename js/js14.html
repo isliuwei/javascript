@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var rows=20;
+		var cols=20;
+
+		var w=25;
+		var h=25;
+
+		var map=new Array();
+		for(var i=0;i<rows;i++){
+			map[i]=new Array();
+			for(var j=0;j<cols;j++){
+				map[i][j]=0;
+			}
+		}
+
+		map[Math.floor(Math.random()*rows)][Math.floor(Math.random()*cols)]=1;
+		map[Math.floor(Math.random()*rows)][Math.floor(Math.random()*cols)]=2;
+
+		for(var i=0;i<rows;i++){
+			for(var j=0;j<cols;j++){
+				if(map[i][j]==1){
+					var bg="red";
+				}else if(map[i][j]==2){
+					var bg="blue";
+				}else{
+					var bg="yellow";
+				}
+
+				document.write('<div style="position:absolute;top:'+(100+h*i)+'px;left:'+(100+w*j)+'px;width:'+w+'px;height:'+h+'px;overflow:hidden;background:'+bg+';border:1px solid white;"></div>')
+			}
+		}
+	</script>
+</body>
+</html>

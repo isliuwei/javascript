@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇1.0</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#container{
+			width: 1000px;
+			border: 1px solid #000;
+			margin: 50px auto;
+		}
+		#ground{
+			width: 1000px;
+			height: 500px;
+			position: relative;
+		}
+		#ground .block{
+			width: 20px;
+			height: 20px;
+			float: left;
+			background: orange;
+		}
+		#ground .section{
+			background: red;
+			position: absolute;
+			top: 60px;
+		}
+		#ground .food{
+			background: green;
+			position: absolute;
+		}
+		#control{
+			height: 50px;
+			line-height: 50px;
+		}
+		#buttons{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="container">
+		<div id="ground"></div>
+		<div id="control">
+			<span id="banner">JavaScript 贪吃蛇 By 唯创网讯</span>
+			<div id="buttons">
+				<input type="button" id="btn-start" value="开始">
+				<input type="button" id="btn-pause" value="暂停">
+			</div>
+		</div>
+	</div>
+
+	<script>
+		//1.初始化草场
+
+		var oGround = document.getElementById('ground');
+		for(var i=0; i<50*25; i++){
+			var oDiv = document.createElement('div');
+			oDiv.className = 'block';
+			oGround.appendChild(oDiv);
+		}
+
+		//2.初始化小蛇
+		
+		var aSnakeBody = [];
+		for(var i=0; i<3; i++){
+			var oSection = document.createElement('div');
+			oSection.className = 'block section';
+			//oSection.innerHTML = i;
+			oSection.style.left = (3-i)*20 + 'px';
+			oGround.appendChild(oSection);
+			aSnakeBody.push(oSection);
+		}
+		
+		//3.初始化食物
+		// do{
+		// 	var iLeft = Math.floor(Math.random()*50)*20;
+		// 	var iTop = Math.floor(Math.random()*25)*20;
+		// 	if(iLeft)
+		// 	var oFood = document.createElement('div');
+		// 	oGround.appendChild(oFood);
+
+
+
+		// }while();
+
+
+		
+
+
+
+	</script>
+	
+</body>
+</html>
